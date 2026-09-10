@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 
 export function Header() {
   const panelId = useId();
@@ -52,7 +53,7 @@ export function Header() {
           onClick={closeMenu}
         >
           <Image
-            src={site.images.logoMark.src}
+            src={withBasePath(site.images.logoMark.src)}
             alt=""
             width={44}
             height={44}

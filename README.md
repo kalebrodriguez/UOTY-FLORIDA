@@ -2,6 +2,8 @@
 
 Website for **United Orthodox Tewahedo Youth (UOTY) Florida** — an Ethiopian Orthodox Tewahedo youth community rooted in Tampa.
 
+If https://kalebrodriguez.github.io/UOTY-FLORIDA/ is showing this README, GitHub Pages is still set to **Deploy from a branch** (`main` / root). Change **Settings → Pages → Source** to **GitHub Actions**, then the Next.js site will appear there instead.
+
 ## Preview locally
 
 ```bash
@@ -16,7 +18,20 @@ npm run lint
 npm run build
 ```
 
-The site is a Next.js app with TypeScript and Tailwind CSS. Do not publish it until the items in `LAUNCH.md` are confirmed.
+The site is a Next.js app with TypeScript and Tailwind CSS. A static export is used so GitHub Pages can host it.
+
+## GitHub Pages
+
+GitHub will not show this site if Pages is pointed at the raw `main` branch. That only publishes `README.md`.
+
+After this workflow is on `main`:
+
+1. Open the repo on GitHub → **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Merge this change (or run the **Deploy GitHub Pages** workflow).
+4. The live site is [https://kalebrodriguez.github.io/UOTY-FLORIDA/](https://kalebrodriguez.github.io/UOTY-FLORIDA/).
+
+Local `npm run dev` still uses [http://localhost:3000](http://localhost:3000) with no `/UOTY-FLORIDA` prefix. The GitHub Pages build sets that prefix automatically.
 
 ## Where to edit content
 
@@ -87,10 +102,11 @@ Use the existing [contact form](https://docs.google.com/forms/d/e/1FAIpQLSeEvCz2
 
 ## Saturday gathering
 
-Meeting day, time, time zone, and optional Zoom URL are in `site.gathering` inside `src/content/site.ts`.
+Meeting day, time, time zone, Zoom URL, and password are in `site.gathering` inside `src/content/site.ts`.
 
 - Keep `timeZoneLabel` as `"Eastern Time"` (not EST year-round).
-- Leave `meetingUrl` as `null` until a current link is confirmed. The site will show “Contact us for gathering details” instead of a broken Join button.
+- If `meetingUrl` is set, the site shows a Join button plus the password.
+- If `meetingUrl` is `null`, the site shows “Contact us for gathering details” instead of a broken Join button.
 
 ## Checks
 

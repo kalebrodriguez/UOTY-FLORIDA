@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 
 export function Story() {
   return (
@@ -19,7 +20,7 @@ export function Story() {
           <figure className="mt-10">
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-cream-deep">
               <Image
-                src={site.images.story.src}
+                src={withBasePath(site.images.story.src)}
                 alt={site.images.story.alt}
                 fill
                 sizes="(min-width: 1024px) 32rem, 100vw"

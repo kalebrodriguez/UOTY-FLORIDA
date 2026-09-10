@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     images: [
       {
-        url: site.images.hero.src,
+        url: `${site.siteUrl}${site.images.hero.src}`,
         width: site.images.hero.width,
         height: site.images.hero.height,
         alt: site.images.hero.alt,
@@ -55,11 +55,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: [site.images.hero.src],
+    images: [`${site.siteUrl}${site.images.hero.src}`],
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: `${site.siteUrl}/icon.png`,
+    apple: `${site.siteUrl}/icon.png`,
   },
 };
 
