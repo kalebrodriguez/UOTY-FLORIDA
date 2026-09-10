@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f4f1e8;
+  --cream-deep: #ebe4d4;
+  --parchment: #faf7f0;
+  --ink: #1c1412;
+  --ink-soft: #4a3c36;
+  --burgundy: #7a1012;
+  --burgundy-deep: #4f0b0d;
+  --burgundy-bright: #980102;
+  --gold: #a07838;
+  --rule: #d3c6ae;
+  --focus: #7a1012;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-parchment: var(--parchment);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-deep: var(--burgundy-deep);
+  --color-burgundy-bright: var(--burgundy-bright);
+  --color-gold: var(--gold);
+  --color-rule: var(--rule);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body), "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+.font-serif {
+  font-family: var(--font-display), Fraunces, "Palatino Linotype", Palatino, serif;
+  font-optical-sizing: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #e8c9c4;
+  color: var(--ink);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 80;
+  background: var(--burgundy-deep);
+  color: var(--cream);
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  height: 1px;
+  width: 2.25rem;
+  background: currentColor;
+  opacity: 0.55;
+}
