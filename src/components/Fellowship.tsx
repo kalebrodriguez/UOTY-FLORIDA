@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 
 export function Fellowship() {
   const gubaye = site.activities[0];
@@ -70,7 +71,7 @@ export function Fellowship() {
           <figure className="lg:col-span-6">
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-cream-deep">
               <Image
-                src={site.images.fellowship.src}
+                src={withBasePath(site.images.fellowship.src)}
                 alt={site.images.fellowship.alt}
                 fill
                 sizes="(min-width: 1024px) 32rem, 100vw"

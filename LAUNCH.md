@@ -4,9 +4,11 @@ These items are **not** shown on the public website. Confirm them before publish
 
 ## Gathering
 
-- [ ] Saturday Gubaye is still **7:00–9:00 p.m. Eastern Time** (edit `src/content/site.ts` → `site.gathering`).
-- [ ] Add a current meeting URL to `site.gathering.meetingUrl` only when it is verified. The old “Saturday Gubaye Link” pointed at a Google Doc, not a working call. Do not reuse it as a join button.
+- [x] Saturday Zoom: `https://us06web.zoom.us/j/3838907036` (password `uoty`) — set in `src/content/site.ts`.
+- [ ] Confirm Saturday Gubaye is still **7:00–9:00 p.m. Eastern Time**.
 - [ ] Confirm that Saturday Gubaye, church festivals at St. Mary’s of Tampa, the St. Teklehaimanot Mehaber, and soccer/fellowship are still current — not only historical.
+
+The Zoom password is shown on the public website because this is a public gathering link.
 
 ## Content not carried over
 
@@ -32,13 +34,13 @@ These items are **not** shown on the public website. Confirm them before publish
 | Orthodox prayers Drive | Public folder titled “PRAYERS” |
 | Official logos Drive | Public folder titled “UOTY LOGO MATERIALS” |
 | Gubaye presentations Drive | Public folder titled “UOTY POWERPOINTS” |
-| Old Saturday Gubaye Google Doc | Not used as a meeting link |
+| Saturday Gubaye Zoom | Public join URL added; password listed on the site |
 
 Drive folders returned public titles. File-level access still depends on how each file inside is shared.
 
 ## Site URL and social previews
 
-- [ ] Set `site.siteUrl` in `src/content/site.ts` to the production address so Open Graph images resolve.
+- [x] Set `site.siteUrl` to the GitHub Pages address (`https://kalebrodriguez.github.io/UOTY-FLORIDA`). Update this if a custom domain is added.
 - [ ] `www.uoty.org` appears on official wordmarks. The homepage is a gated “click to enter” page; it is **not** linked from this site until someone confirms it is the correct public destination.
 
 ## Missing or unused assets
