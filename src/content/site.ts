@@ -125,9 +125,9 @@ export const site = {
     {
       id: "church",
       title: "Church festivals and service",
-      summary: "Serving with St. Mary’s of Tampa on feast days and in parish life.",
+      summary: "Serving with St. Mary’s of Tampa on feast days and in church life.",
       detail:
-        "UOTY Florida grew alongside St. Mary’s Ethiopian Orthodox Tewahedo Church in Tampa. We continue to assist with in-person festivals and service there whenever the parish gathers to keep the feasts of the Church.",
+        "UOTY Florida grew alongside St. Mary’s Ethiopian Orthodox Tewahedo Church in Tampa. We continue to assist with in-person festivals and service there whenever the church gathers to keep the feasts.",
     },
     {
       id: "mehaber",
@@ -181,7 +181,7 @@ export const site = {
     lede:
       "UOTY Florida began when local youth needed a way to stay close to the Church — and to one another.",
     paragraphs: [
-      "In 2020, regular Sunday school and parish gatherings at St. Mary’s Ethiopian Orthodox Tewahedo Church in Tampa were interrupted. For many young people, that weekly life after liturgy had been the place their faith was taught and shared.",
+      "In 2020, regular Sunday school and church gatherings at St. Mary’s Ethiopian Orthodox Tewahedo Church in Tampa were interrupted. For many young people, that weekly life after liturgy had been the place their faith was taught and shared.",
       "From that Tampa community, youth joined the broader United Orthodox Tewahedo Youth organization and formed a Florida branch. They began with prayer and sermons over conference calls, then moved to Zoom, welcomed guest speakers, and later gathered in person again.",
       "We remain connected to St. Mary’s of Tampa and to UOTY communities elsewhere. Florida is one branch in a wider family of Orthodox youth — not the whole of it — working toward the same hope: to grow the spirit, strengthen the mind, and inspire love through God’s grace.",
     ],
