@@ -2,43 +2,54 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef } from "react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { site } from "@/content/site";
 
 export function Header() {
-  const [open, setOpen] = useState(false);
   const panelId = useId();
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+
+  function closeMenu() {
+    if (detailsRef.current) {
+      detailsRef.current.open = false;
+    }
+  }
 
   useEffect(() => {
-    if (!open) {
+    const node = detailsRef.current;
+    if (!node) {
       return;
     }
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closeMenu();
       }
     };
 
+    const onToggle = () => {
+      document.body.style.overflow = node.open ? "hidden" : "";
+    };
+
     document.addEventListener("keydown", onKey);
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    node.addEventListener("toggle", onToggle);
 
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = previous;
+      node.removeEventListener("toggle", onToggle);
+      document.body.style.overflow = "";
     };
-  }, [open]);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-rule/80 bg-cream/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-rule/80 bg-cream">
       <div className="h-1 bg-burgundy" />
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
         <Link
           href="/"
           className="flex min-w-0 items-center gap-3 text-ink no-underline"
-          onClick={() => setOpen(false)}
+          onClick={closeMenu}
         >
           <Image
             src={site.images.logoMark.src}
@@ -79,50 +90,46 @@ export function Header() {
           </ExternalLink>
         </nav>
 
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-rule text-ink lg:hidden"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-          <span aria-hidden className="flex w-5 flex-col gap-1.5">
-            <span
-              className={`block h-px bg-ink transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
-            />
-            <span className={`block h-px bg-ink ${open ? "opacity-0" : ""}`} />
-            <span
-              className={`block h-px bg-ink transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
-            />
-          </span>
-        </button>
-      </div>
-
-      <div
-        id={panelId}
-        hidden={!open}
-        className="border-t border-rule bg-parchment px-5 py-5 lg:hidden"
-      >
-        <nav aria-label="Mobile" className="flex flex-col gap-1">
-          {site.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-sm px-2 py-3 text-lg text-ink"
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <ExternalLink
-            href={site.contact.href}
-            className="mt-3 rounded-sm bg-burgundy px-4 py-3 text-center text-cream no-underline"
-            onClick={() => setOpen(false)}
+        <details ref={detailsRef} className="group lg:hidden">
+          <summary
+            className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-sm border border-rule text-ink [&::-webkit-details-marker]:hidden"
+            aria-controls={panelId}
           >
-            {site.contact.label}
-          </ExternalLink>
-        </nav>
+            <span className="sr-only">Menu</span>
+            <span aria-hidden className="relative flex h-4 w-5 items-center">
+              <span className="absolute left-0 block h-0.5 w-5 bg-ink transition-transform group-open:-translate-y-0 group-open:rotate-45 -translate-y-1.5" />
+              <span className="absolute left-0 block h-0.5 w-5 bg-ink group-open:opacity-0" />
+              <span className="absolute left-0 block h-0.5 w-5 bg-ink transition-transform group-open:translate-y-0 group-open:-rotate-45 translate-y-1.5" />
+            </span>
+          </summary>
+          <div
+            id={panelId}
+            className="fixed inset-x-0 bottom-0 top-[4.35rem] z-50 overflow-y-auto border-t border-rule bg-parchment"
+          >
+            <nav
+              aria-label="Mobile"
+              className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-6 sm:px-8"
+            >
+              {site.nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-sm px-2 py-3 text-xl text-ink"
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <ExternalLink
+                href={site.contact.href}
+                className="mt-4 rounded-sm bg-burgundy px-4 py-3 text-center text-cream no-underline"
+                onClick={closeMenu}
+              >
+                {site.contact.label}
+              </ExternalLink>
+            </nav>
+          </div>
+        </details>
       </div>
     </header>
   );

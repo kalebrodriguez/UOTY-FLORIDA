@@ -105,3 +105,7 @@ h3,
   background: currentColor;
   opacity: 0.55;
 }
+
+summary {
+  list-style: none;
+}

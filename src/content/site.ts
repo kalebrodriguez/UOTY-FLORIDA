@@ -120,7 +120,7 @@ export const site = {
       pronunciation: "goo-bah-yay",
       summary: "Our weekly online gathering for prayer, Scripture, hymn, and teaching.",
       detail:
-        "A Gubaye is a gathering. On Saturday evenings we meet online to pray, read Scripture, sing, remember the saints, and hear a sermon. It is the heart of our weekly life together.",
+        "On Saturday evenings we meet online to pray, read Scripture, sing, remember the saints, and hear a sermon. It is the heart of our weekly life together.",
     },
     {
       id: "church",
