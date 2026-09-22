@@ -31,10 +31,10 @@ export const site = {
   parentOrganization: "United Orthodox Tewahedo Youth",
   parentAbbreviation: "UOTY",
   /**
-   * Set this to the public site URL before launch so social previews resolve
-   * correctly (for example, "https://example.org"). Leave empty until then.
+   * Public site origin, without a trailing slash. Used for Open Graph URLs.
+   * GitHub Pages: https://kalebrodriguez.github.io/UOTY-FLORIDA
    */
-  siteUrl: "",
+  siteUrl: "https://kalebrodriguez.github.io/UOTY-FLORIDA",
   tagline: "Faith, fellowship, and a place to belong.",
   identity:
     "an Ethiopian Orthodox Tewahedo youth community in Florida",
@@ -55,7 +55,7 @@ export const site = {
     label: "Contact us",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSeEvCz2vD4HhlG1hngvmHAJa2H8gLkh8-YvvxvlJcIe_9LLpQ/viewform?usp=header",
     description:
-      "Use our contact form to ask about gatherings, request the Saturday meeting details, or share photos from past events.",
+      "Use our contact form to ask a question or share photos from past events.",
   },
   startBranch: {
     label: "Start a branch",
@@ -75,10 +75,12 @@ export const site = {
     timeZone: "America/New_York",
     timeZoneLabel: "Eastern Time",
     /**
-     * The original site had no working meeting URL. Leave null until a
-     * current Zoom or call link is confirmed. Do not invent one.
+     * Public Saturday Zoom. Leave meetingUrl null to hide the Join button
+     * and show the contact-form fallback instead.
      */
-    meetingUrl: null as string | null,
+    meetingUrl: "https://us06web.zoom.us/j/3838907036",
+    meetingPassword: "uoty",
+    meetingId: "383 890 7036",
     format: "online",
     intro:
       "Each Saturday we gather online for Gubaye — a youth service of prayer, Scripture, hymn, and teaching.",

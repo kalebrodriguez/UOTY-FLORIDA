@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ExternalLink } from "@/components/ExternalLink";
 import { site } from "@/content/site";
 import { albumsByYear, photoArchive } from "@/content/photos";
+import { withBasePath } from "@/lib/paths";
 
 export function PhotoGallery() {
   const groups = albumsByYear();
@@ -48,7 +49,7 @@ export function PhotoGallery() {
                             }}
                           >
                             <Image
-                              src={photo.src}
+                              src={withBasePath(photo.src)}
                               alt={photo.alt}
                               fill
                               sizes="(min-width: 768px) 36rem, 100vw"

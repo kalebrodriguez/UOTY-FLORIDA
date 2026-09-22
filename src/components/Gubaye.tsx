@@ -3,7 +3,8 @@ import { gatheringSchedule, site } from "@/content/site";
 
 export function Gubaye() {
   const { gathering, contact } = site;
-  const hasMeetingUrl = Boolean(gathering.meetingUrl);
+  const meetingUrl = gathering.meetingUrl;
+  const hasMeetingUrl = Boolean(meetingUrl);
 
   return (
     <section
@@ -22,26 +23,48 @@ export function Gubaye() {
           <p className="mt-6 leading-relaxed text-cream/85">{gathering.intro}</p>
           <p className="mt-4 leading-relaxed text-cream/85">{gathering.expect}</p>
 
-          {hasMeetingUrl ? (
-            <ExternalLink
-              href={gathering.meetingUrl ?? ""}
-              className="mt-8 inline-flex rounded-sm bg-cream px-6 py-3 text-burgundy-deep no-underline hover:bg-parchment"
-            >
-              Join Saturday Gubaye
-            </ExternalLink>
+          {hasMeetingUrl && meetingUrl ? (
+            <>
+              <ExternalLink
+                href={meetingUrl}
+                className="mt-8 inline-flex rounded-sm bg-cream px-6 py-3 text-burgundy-deep no-underline hover:bg-parchment"
+              >
+                Join Saturday Gubaye on Zoom
+              </ExternalLink>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/80">
+                {gathering.meetingId ? (
+                  <>
+                    Meeting ID: {gathering.meetingId}
+                    <br />
+                  </>
+                ) : null}
+                {gathering.meetingPassword ? (
+                  <>
+                    Password:{" "}
+                    <span className="font-semibold tracking-wide text-cream">
+                      {gathering.meetingPassword}
+                    </span>
+                  </>
+                ) : null}
+              </p>
+              <p className="mt-3 max-w-sm text-sm text-cream/70">
+                Zoom opens in a new tab. Use the password if Zoom asks for one.
+              </p>
+            </>
           ) : (
-            <ExternalLink
-              href={contact.href}
-              className="mt-8 inline-flex rounded-sm bg-cream px-6 py-3 text-burgundy-deep no-underline hover:bg-parchment"
-            >
-              Contact us for gathering details
-            </ExternalLink>
+            <>
+              <ExternalLink
+                href={contact.href}
+                className="mt-8 inline-flex rounded-sm bg-cream px-6 py-3 text-burgundy-deep no-underline hover:bg-parchment"
+              >
+                Contact us for gathering details
+              </ExternalLink>
+              <p className="mt-4 max-w-sm text-sm text-cream/70">
+                There is no public meeting link on this page yet. Write through
+                the contact form and we will share current details.
+              </p>
+            </>
           )}
-          <p className="mt-4 max-w-sm text-sm text-cream/70">
-            {hasMeetingUrl
-              ? "The meeting opens in a new tab at the scheduled time."
-              : "There is no public meeting link on this page yet. Write through the contact form and we will share current details."}
-          </p>
         </div>
 
         <ol className="lg:col-span-7">

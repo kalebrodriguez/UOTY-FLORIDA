@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 
 export function Hero() {
   return (
@@ -37,7 +38,7 @@ export function Hero() {
         <figure className="lg:col-span-6">
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-cream-deep shadow-[0_20px_50px_-28px_rgba(79,11,13,0.45)]">
             <Image
-              src={site.images.hero.src}
+              src={withBasePath(site.images.hero.src)}
               alt={site.images.hero.alt}
               fill
               sizes="(min-width: 1024px) 34rem, 100vw"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <Image
-              src={site.images.logoMark.src}
+              src={withBasePath(site.images.logoMark.src)}
               alt=""
               width={48}
               height={48}
